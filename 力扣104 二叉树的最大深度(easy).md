@@ -1,4 +1,4 @@
-## 题目来源：[力扣 104. 二叉树的最大深度(简单题)](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree)
+## 题目来源：[力扣104 二叉树的最大深度(简单题)](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree)
 
 ### 战绩：执行用时 :12 ms, 在所有 C++ 提交中击败了72.73%的用户，内存消耗 :19.6 MB, 在所有 C++ 提交中击败了5.09%的用户
 
