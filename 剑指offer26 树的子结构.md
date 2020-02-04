@@ -50,3 +50,18 @@ public:
     }
 };
 ```
+
+### 力扣572有个类似的题目：[另一个树的子树](https://leetcode-cn.com/problems/subtree-of-another-tree/),与这个题的区别是子树完全相等。例如：输入：[3,4,5,1,2,NULL,NULL,NULL,NULL,0] [4,1,2]  顺序遍历的二叉树  输出：true。只需要把DoesTree1HaveTree2改一下就好.
+
+### 改后代码：
+```
+bool DoesTree1HaveTree2(TreeNode* pRoot1,TreeNode* pRoot2){
+        if(pRoot1==NULL&&pRoot2==NULL)
+            return true;
+        if(pRoot1==NULL&&pRoot2!=NULL||pRoot1!=NULL&&pRoot2==NULL)
+            return false;
+        if(!Equal(pRoot1->val,pRoot2->val))
+            return false;
+        return DoesTree1HaveTree2(pRoot1->left,pRoot2->left)&&DoesTree1HaveTree2(pRoot1->right,pRoot2->right);
+    }
+```
