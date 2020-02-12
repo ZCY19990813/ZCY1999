@@ -77,3 +77,39 @@ public:
 };
 ```
 
+
+### AC代码（检查是否数组满足条件）：
+```
+class Solution {
+public:
+    bool Check(vector<int>& nums,int num){
+        int time=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==num)
+                time++;
+        }
+        if(time*2<=nums.size())
+            return false;
+        return true;
+    }
+    int MoreThanHalfNum_Solution(vector<int>& nums) {
+        if(nums.size()<=0)
+            return 0;
+        int num=nums[0];
+        int time=1;
+        for(int i=1;i<nums.size();i++){
+            if(time==0){
+                num=nums[i];
+                time=1;
+            }
+            else if(num==nums[i])
+                time++;
+            else
+                time--;
+        }
+        if(!Check(nums,num))
+            return 0;
+        return num;
+    }
+};
+```
