@@ -23,6 +23,8 @@
 ```
 \\迭代
 public int lastRemaining(int n, int m) {
+    if(n<=0||m<=0)//没有小朋友，返回-1（牛客上面）
+           return -1;
     int flag = 0;   
     for (int i = 2; i <= n; i++) {
         flag = (flag + m) % i;
