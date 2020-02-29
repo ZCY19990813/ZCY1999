@@ -4,9 +4,9 @@
 
 ### 输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
 
-### 思路：第一步：把链表的每个节点复制并将它放在原节点后面，只复制next指针；第二步：如果要找到cur的复制节点的random指针，可以通过cur->random->next找到；第三步：将原节点和新的节点分类开即可.
+### 思路1：第一步：把链表的每个节点复制并将它放在原节点后面，只复制next指针；第二步：如果要找到cur的复制节点的random指针，可以通过cur->random->next找到；第三步：将原节点和新的节点分类开即可.
 
-### AC代码：
+### AC代码1：
 
 ```
 /*
@@ -70,3 +70,50 @@ public:
 };
 ```
 
+### 思路2：用map存储一下，先复制正常的链表，在来一遍复制其他的。
+
+### AC代码2：
+
+```
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* next;
+    Node* random;
+    
+    Node(int _val) {
+        val = _val;
+        next = NULL;
+        random = NULL;
+    }
+};
+*/
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        if(head==NULL)
+            return NULL;
+        Node* newHead=new Node(head->val);
+        Node *p=newHead,*q=head->next;
+        map<Node*,Node*> oldTonew;
+        oldTonew[head]=newHead;
+        while(q!=NULL){
+            Node *tmp=new Node(q->val);
+            p->next=tmp;
+            p=tmp;
+            oldTonew[q]=tmp;
+            q=q->next;
+        }
+        p=newHead;
+        q=head;
+        while(q!=NULL){
+            p->random=oldTonew[q->random];
+            p=p->next;
+            q=q->next;
+        }
+        return newHead;
+    }
+};
+```
